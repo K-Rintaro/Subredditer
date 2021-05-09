@@ -5,7 +5,6 @@ const moment = require('moment')
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-
 const sethour = moment().add(-2, 'hours').unix()
 
 async function asyncCall() {
@@ -24,7 +23,7 @@ async function asyncCall() {
                 var iddesu = json.data.children[i].data.id;
                 var commentdesu = json.data.children[i].data.num_comments;
 
-                client.channels.cache.get('807793157856559128').send({
+                client.channels.cache.get('840199658025648188').send({
                     embed: {
                         color: 16757683,
                         author: {
@@ -63,7 +62,6 @@ async function asyncCall() {
     })
 }
 
-setInterval(asyncCall, 10000);
-
+asyncCall
 
 client.login(process.env.TOKEN);
