@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "A Discord bot that can collect & post subreddit post",
   "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "webpack"
+  },
   "keywords": [
     "Reddit"
   ],
