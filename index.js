@@ -23,7 +23,7 @@ async function asyncCall() {
                 var iddesu = json.data.children[i].data.id;
                 var commentdesu = json.data.children[i].data.num_comments;
 
-                client.channels.cache.get('840199658025648188').send({
+                client.channels.cache.get('807793157856559128').send({
                     embed: {
                         color: 16757683,
                         author: {
@@ -62,6 +62,6 @@ async function asyncCall() {
     })
 }
 
-setInterval(asyncCall, 7200000);
+setInterval(asyncCall, 10000);
 
 client.login(process.env.TOKEN);
