@@ -15,7 +15,7 @@ async function asyncCall() {
         for (let i = 0; i < json.data.children.length; i++){
             if (json.data.children[i].data.created_utc > sethour){
                 if(json.data.children[i].data.over_18 == false){
-                if(Number(json.data.children[i].data.score) >= 10){
+                if(Number(json.data.children[i].data.score) >= 3){
                 var titledesu = json.data.children[i].data.title;
                 var authordesu = json.data.children[i].data.author;
                 var point = json.data.children[i].data.score;
@@ -63,5 +63,6 @@ async function asyncCall() {
 }
 
 setInterval(asyncCall, 7200000);
+
 
 client.login(process.env.TOKEN);
