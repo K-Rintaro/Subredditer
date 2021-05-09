@@ -23,7 +23,7 @@ async function asyncCall() {
                 var iddesu = json.data.children[i].data.id;
                 var commentdesu = json.data.children[i].data.num_comments;
 
-                client.channels.cache.get('807793157856559128').send({
+                client.channels.cache.get('840199658025648188').send({
                     embed: {
                         color: 16757683,
                         author: {
