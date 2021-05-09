@@ -5,7 +5,7 @@ const moment = require('moment')
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const sethour = moment().add(-1, 'hours').unix()
+const sethour = moment().add(-2, 'hours').unix()
 
 async function asyncCall() {
     fetch('https://www.reddit.com/r/newsokuexp/new.json?sort=new')
@@ -62,6 +62,6 @@ async function asyncCall() {
     })
 }
 
-asyncCall()
+setInterval(asyncCall, 7200000);
 
 client.login(process.env.TOKEN);
