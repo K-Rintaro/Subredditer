@@ -62,6 +62,6 @@ async function asyncCall() {
     })
 }
 
-asyncCall
+asyncCall()
 
 client.login(process.env.TOKEN);
