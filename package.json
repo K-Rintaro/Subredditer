@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "A Discord bot that can collect & post subreddit post",
   "main": "app.js",
-  "scripts": {
-    "start": "node app.js"
-  },
   "keywords": [
     "Reddit"
   ],

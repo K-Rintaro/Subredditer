@@ -63,7 +63,7 @@ async function asyncCall() {
     })
 }
 
-cron.schedule('0 15 21 * * *', () => {
+cron.schedule('0 17 21 * * *', () => {
     asyncCall()
 });
 
