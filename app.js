@@ -6,9 +6,10 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cron = require('node-cron');
 
-const sethour = moment().add(-2, 'hours').unix()
+var kakunouko = []
 
 async function asyncCall() {
+    const sethour = moment().add(-2, 'hours').unix()
     fetch('https://www.reddit.com/r/newsokuexp/new.json?sort=new')
     .then(res => res.json())
     .then(json => {
@@ -23,7 +24,7 @@ async function asyncCall() {
                 var thumbnaildesu = json.data.children[i].data.thumbnail;
                 var iddesu = json.data.children[i].data.id;
                 var commentdesu = json.data.children[i].data.num_comments;
-
+                if (kakunouko.includes(iddesu) == false){
                 client.channels.cache.get('840199658025648188').send({
                     embed: {
                         color: 16757683,
@@ -58,7 +59,9 @@ async function asyncCall() {
                         ]
                     }
                 })
-            }
+                kakunouko.push(iddesu)
+                }
+            }   
         }}}
     })
 }
