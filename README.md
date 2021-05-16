@@ -17,6 +17,6 @@ client.channels.cache.get().send
 ```
 Please install old version of Discord.js (Recommend: @12.5.1)
 
-## LICESE
+## LICENSE
 
 This software is released under the MIT license.
