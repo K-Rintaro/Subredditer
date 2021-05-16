@@ -9,15 +9,15 @@ const cron = require('node-cron');
 var kakunouko = []
 
 async function asyncCall() {
-    const sethour = moment().add(-2, 'hours').unix()
-    fetch('https://www.reddit.com/r/newsokuexp/new.json?sort=new')
+    const sethour = moment().add(-2, 'hours').unix() //please change from -2 to time interval that you want to set (ex. every three hours → -3)
+    fetch(`https://www.reddit.com/r/${process.env.SUBREDDIT_NAME}/new.json?sort=new`)
     .then(res => res.json())
     .then(json => {
         console.log(json.data.children.length)
         for (let i = 0; i < json.data.children.length; i++){
             if (json.data.children[i].data.created_utc > sethour){
                 if(json.data.children[i].data.over_18 == false){
-                if(Number(json.data.children[i].data.score) >= 10){
+                if(Number(json.data.children[i].data.score) >= 10){//please change from 10 to the point that you want to set
                 var titledesu = json.data.children[i].data.title;
                 var authordesu = json.data.children[i].data.author;
                 var point = json.data.children[i].data.score;
@@ -25,7 +25,7 @@ async function asyncCall() {
                 var iddesu = json.data.children[i].data.id;
                 var commentdesu = json.data.children[i].data.num_comments;
                 if (kakunouko.includes(iddesu) == false){
-                client.channels.cache.get('840199658025648188').send({
+                client.channels.cache.get(`${process.env.CHANNEL_ID}`).send({
                     embed: {
                         color: 16757683,
                         author: {
@@ -35,24 +35,24 @@ async function asyncCall() {
                         url: `https://redd.it/${iddesu}`,
                         color: 16757683,
                         footer: {
-                            text: "r/newsokuexp",
+                            text: `r/${process.env.SUBREDDIT_NAME}`,
                         },
                         image: {
                             url: thumbnaildesu
                         },
                         fields: [
                             {
-                                name: "スレ主",
+                                name: "Author",
                                 value: authordesu,
                                 inline: true
                             },
                             {
-                                name: "ポイント",
+                                name: "Point",
                                 value: point,
                                 inline: true
                             },
                             {
-                                name: "コメント数",
+                                name: "Comments",
                                 value: commentdesu,
                                 inline: true
                             }
@@ -66,7 +66,7 @@ async function asyncCall() {
     })
 }
 
-cron.schedule('0 0 */2 * * *', () => {
+cron.schedule('0 0 */2 * * *', () => {//please change from */2 to time interval that you want to set (ex. every three hours → */3)
     asyncCall()
 });
 
